@@ -24,7 +24,7 @@ function LessonDetails({ match }) {
   return (
     <div>
         { lesson?.questions?.map((question,index) => (
-            <div key={question.id}>
+            <div className={'text-success'} key={question.id}>
                 <div>Question{index+1}: {question.text}</div>
                 <div>a) {question.option_1}</div>
                 <div>b) {question.option_2}</div>
