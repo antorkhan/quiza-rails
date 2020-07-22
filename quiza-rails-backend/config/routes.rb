@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :courses do
     resources :lessons
   end
+
+  post '/evaluate-answers', to: 'questions#evaluate'
 end
