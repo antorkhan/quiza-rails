@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   def evaluate
     questions = Course.find(params[:courseID]).lessons.find(params[:lessonID]).questions
     score = 0
