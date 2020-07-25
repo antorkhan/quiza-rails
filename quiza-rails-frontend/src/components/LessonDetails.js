@@ -1,5 +1,4 @@
 import React, { useEffect,useState } from 'react';
-//import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -24,15 +23,19 @@ function LessonDetails({ match }) {
 
         });
       }
+
+
     const submitForEvaluation = async () => {
-        axios.post(`http://localhost:3000/evaluate-answers`,{ answers: answers, courseID: match.params.courseID, lessonID: match.params.lessonID} )
-        .then((res) => {
-            console.log(res);
-            setResult(`Your score is ${res.data.score}`);
-        })
-        .catch((res) => {
-            setResult(`Something Went Wrong!`);
-        })
+        if(window.confirm("You sure you want to submit?")){
+            axios.post(`http://localhost:3000/evaluate-answers`,{ answers: answers, courseID: match.params.courseID, lessonID: match.params.lessonID} )
+            .then((res) => {
+                console.log(res);
+                setResult(`Your score is ${res.data.score}`);
+            })
+            .catch((res) => {
+                setResult(`Something Went Wrong!`);
+            });
+        }
     };
       
     const onOptionSelect = (event) => {

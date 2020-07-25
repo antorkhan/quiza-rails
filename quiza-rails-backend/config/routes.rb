@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   end
 
   post '/evaluate-answers', to: 'questions#evaluate'
+  namespace :admin do
+    get '/auth/login', to: 'authentications#login'
+
+  end
 end
