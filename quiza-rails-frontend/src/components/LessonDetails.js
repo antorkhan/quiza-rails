@@ -15,7 +15,7 @@ function LessonDetails({ match }) {
 
 
     const fetchLessonDetails = async (courseID, lessonID)=>{
-        axios.get(`http://localhost:3000/courses/${courseID}/lessons/${lessonID}`)
+        axios.get(`${process.env.REACT_APP_URL}/courses/${courseID}/lessons/${lessonID}`)
         .then( (res) => {
             setLesson(res.data);
         })
@@ -27,7 +27,7 @@ function LessonDetails({ match }) {
 
     const submitForEvaluation = async () => {
         if(window.confirm("You sure you want to submit?")){
-            axios.post(`http://localhost:3000/evaluate-answers`,{ answers: answers, courseID: match.params.courseID, lessonID: match.params.lessonID} )
+            axios.post(`${process.env.REACT_APP_URL}/evaluate-answers`,{ answers: answers, courseID: match.params.courseID, lessonID: match.params.lessonID} )
             .then((res) => {
                 console.log(res);
                 setResult(`Your score is ${res.data.score}`);
@@ -48,6 +48,7 @@ function LessonDetails({ match }) {
 
   return (
     <div>
+              URL:{process.env.REACT_APP_URL}
         { lesson?.questions?.map((question,index) => (
             <div className={'text-success'} key={question.id}>
                 <div>Question{index+1}: {question.text}</div>
