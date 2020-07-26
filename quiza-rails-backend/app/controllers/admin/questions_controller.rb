@@ -1,5 +1,7 @@
 class Admin::QuestionsController < ApplicationController
   before_action :set_course_and_lesson
+  before_action :authorize_request
+
 
   def create
     question = @lesson&.questions&.new(text: params[:text],

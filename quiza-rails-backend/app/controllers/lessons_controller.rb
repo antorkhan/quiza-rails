@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_course
+
+
   def index
     lessons = @course.lessons.all
     render json: { lessons: lessons}

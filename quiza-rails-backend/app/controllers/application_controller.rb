@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   def authorize_request
     header = request.headers['Authorization']
     header = header.split(' ').last if header
+    puts '***************************'
+    puts header
+    puts '***************************'
     begin
       @decoded = JsonWebToken.decode(header)
       @current_user = SysUser.find(@decoded[:sys_user_id])
@@ -11,6 +14,6 @@ class ApplicationController < ActionController::Base
       render json: { errors: e.message }, status: :unauthorized
     end
     rescue JWT::DecodeError => e
-      render json: { errors: e.message }, status: :unauthorized
+      render json: { errors: e.message, message: 'Invalid Token' }, status: :unauthorized
   end
 end

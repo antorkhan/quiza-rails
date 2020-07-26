@@ -1,5 +1,6 @@
 class Admin::LessonsController < ApplicationController
   before_action :set_course
+  before_action :authorize_request
 
   def create
     @lesson = @course.lessons.new(name: params[:name], description: params[:description])
