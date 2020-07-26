@@ -8,7 +8,8 @@ import axios from 'axios';
 
 function AdminDashboard({authHeader}) {
     const [courses, setCourses] = useState([]);
-    const [newCourse, setnewCourse] = useState({name: '', description: ''});
+    let initialState = {name: '', description: ''}
+    const [newCourse, setnewCourse] = useState(initialState);
     useEffect(() => {
       fetchCourses();
     },[]);
@@ -65,6 +66,7 @@ function AdminDashboard({authHeader}) {
         axios(config)
         .then( (res) => {
             console.log(res);
+            setnewCourse(initialState);
             fetchCourses();
         })
         .catch((res) => {
@@ -77,7 +79,7 @@ function AdminDashboard({authHeader}) {
         admin dashboard
         { courses.map(course=>{
           return <h1 key={course.id}>
-                   <Link to={`/admin/courses/${course.id}`}>{course.name}</Link>|<Link to={`/admin/courses/${course.id}/edit`}>edit</Link>|<button id={course.id} onClick={deleteCourse}>delete</button>
+                   <Link to={`/admin/courses/${course.id}`}>{course.name}</Link><Link to={`/admin/courses/${course.id}/edit`}><button>edit</button></Link><button id={course.id} onClick={deleteCourse}>delete</button>
                   </h1>
           })}
         <div>Create Course</div>

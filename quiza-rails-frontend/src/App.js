@@ -13,6 +13,8 @@ import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import './App.css';
+require('dotenv').config({path: './.env.'+process.env.NODE_ENV});
+
 
 function App() {
   let authHeader =  { 
