@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from './NavBar'
 import Home from './components/Home'
 import Courses from './components/Courses'
 import CourseDetails from './components/CourseDetails'
@@ -25,20 +26,25 @@ function App() {
     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzeXNfdXNlcl9pZCI6MSwiZXhwIjoxNTk1ODU1NDA0fQ.9dfC-SzYVPaWewqT_M52EgvHhJgBJupNn9LA8cd6VKw'
   }
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path={'/'} exact component = {Home}/>
-        <Route path={'/courses'} exact component = {Courses}/>
-        <Route path={'/courses/:courseID/lessons/:lessonID'} exact component = {LessonDetails}/>
-        <Route path={'/courses/:courseID'} exact component = {CourseDetails}/>
-        <Route exact path='/admin' render={(props) => <AdminDashboard {...props} authHeader={authHeader} />} />
-        <Route exact path='/admin/courses/:courseID/lessons/:lessonID/questions/:questionID/edit' render={(props) => <AdminEditQuestion {...props} authHeader={authHeader} />} />
-        <Route exact path='/admin/courses/:courseID/lessons/:lessonID/edit' render={(props) => <AdminEditLesson {...props} authHeader={authHeader} />} />
-        <Route exact path='/admin/courses/:courseID/lessons/:lessonID/' render={(props) => <AdminLessonDetails {...props} authHeader={authHeader} />} />
-        <Route exact path='/admin/courses/:courseID/edit' render={(props) => <AdminEditCourse {...props} authHeader={authHeader} />} />
-        <Route exact path='/admin/courses/:courseID' render={(props) => <AdminCourseDetails {...props} authHeader={authHeader} />} />
-      </Switch>
-    </BrowserRouter>
+    <div>
+
+      <BrowserRouter>
+      <NavBar/>
+        <Switch>
+          <Route path={'/'} exact component = {Home}/>
+          <Route path={'/courses'} exact component = {Courses}/>
+          <Route path={'/courses/:courseID/lessons/:lessonID'} exact component = {LessonDetails}/>
+          <Route path={'/courses/:courseID'} exact component = {CourseDetails}/>
+          <Route exact path='/admin' render={(props) => <AdminDashboard {...props} authHeader={authHeader} />} />
+          <Route exact path='/admin/courses/:courseID/lessons/:lessonID/questions/:questionID/edit' render={(props) => <AdminEditQuestion {...props} authHeader={authHeader} />} />
+          <Route exact path='/admin/courses/:courseID/lessons/:lessonID/edit' render={(props) => <AdminEditLesson {...props} authHeader={authHeader} />} />
+          <Route exact path='/admin/courses/:courseID/lessons/:lessonID/' render={(props) => <AdminLessonDetails {...props} authHeader={authHeader} />} />
+          <Route exact path='/admin/courses/:courseID/edit' render={(props) => <AdminEditCourse {...props} authHeader={authHeader} />} />
+          <Route exact path='/admin/courses/:courseID' render={(props) => <AdminCourseDetails {...props} authHeader={authHeader} />} />
+        </Switch>
+      </BrowserRouter>
+    </div>
+
   );
 }
 

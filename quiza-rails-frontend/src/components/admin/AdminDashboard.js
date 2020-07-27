@@ -78,7 +78,6 @@ function AdminDashboard({ authHeader }) {
 
     return (
         <div className={'container'}>
-            {process.env.REACT_APP_URL}
             <div className={'h3 text-center mb-4 mt-5'}>Course List</div>
             <div className={'float-left'}><Link to={`/`}>Go Back</Link></div>
             <div>

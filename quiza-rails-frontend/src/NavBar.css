@@ -1,0 +1,26 @@
+.nav-bar{
+ width: 100%;
+ height: 55px;
+ color: black;
+ background-color: blanchedalmond;
+}
+
+/* unvisited link */
+.nav-item  a:link {
+    color: red;
+  }
+  
+  /* visited link */
+  .nav-item a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  }
