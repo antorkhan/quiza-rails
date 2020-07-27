@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 
 
 
 function AdminEditQuestion({ match, authHeader }) {
+    let history = useHistory();
     const [question, setQuestion] = useState({});
+    const [message, setMessage] = useState('');
     useEffect(() => {
         fetchQuestion(match.params.courseID, match.params.lessonID, match.params.questionID)
     }, []);
@@ -27,8 +29,12 @@ function AdminEditQuestion({ match, authHeader }) {
         };
         axios(config)
             .then((res) => {
+                setMessage('Question Updated Successfully!');
                 console.log(res.data);
             })
+            .catch((res) => {
+                if (res.response.status === 401) { history.push(`/admin/log-in`) }
+            });
     }
 
     const fetchQuestion = async (courseID, lessonID, questionID) => {
@@ -42,12 +48,16 @@ function AdminEditQuestion({ match, authHeader }) {
                 console.log(res.data);
                 setQuestion(res.data);
             })
+            .catch((res) => {
+                if (res.response.status === 401) { history.push(`/admin/log-in`) }
+            });
     }
 
 
     return (
         <div>
-            <div>Update Question</div>
+            <div className={'h3 text-center'}>Update Question</div>
+            <div>{message}</div>
             <div className={'float-left'}><Link to={`/admin/courses/${match?.params?.courseID}/lessons/${match?.params?.lessonID}`}>Go Back</Link></div>
             <div className={'row'}>
                 <div className={'col-8 pt-2 pb-3'}>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 
 
 
 function AdminCourseDetails({ match, authHeader }) {
+    let history = useHistory();
     const [lesson, setLesson] = useState({});
     let initialState = { text: '', option_1: '', option_2: '', option_3: '', option_4: '', correct_option: '1' }
     const [newQuestion, setNewQuestion] = useState(initialState);
@@ -34,8 +35,8 @@ function AdminCourseDetails({ match, authHeader }) {
 
             })
             .catch((res) => {
-                console.log(res);
-            })
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
+            });
     }
 
     const fetchLesson = async (courseID, lessonID) => {
@@ -53,8 +54,8 @@ function AdminCourseDetails({ match, authHeader }) {
 
             })
             .catch((res) => {
-                console.log(res);
-            })
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
+            });
     }
     let deleteQuestion = (event) => {
         let data = {};
@@ -72,8 +73,8 @@ function AdminCourseDetails({ match, authHeader }) {
                 fetchLesson(match?.params?.courseID, match?.params?.lessonID);
             })
             .catch((res) => {
-                console.log(res);
-            })
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
+            });
     }
 
     return (
@@ -124,10 +125,10 @@ function AdminCourseDetails({ match, authHeader }) {
                     <div className={'col-4 pt-2 pb-3'}>
                         Correct Option:
                             <select name={'correct_option'} onChange={updateNewLessonInfo} value={newQuestion.correct_option} className={'form-control'}>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select>
                     </div>
                     <div className={'col-3'}>
