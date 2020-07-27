@@ -98,7 +98,7 @@ function AdminCourseDetails({ match, authHeader }) {
                                 <td scope="row">{index + 1}</td>
                                 <td>{lesson.name}</td>
                                 <td>{lesson.description}</td>
-                                <td><Link key={lesson.id} to={`/courses/${match.params.courseID}/lessons/${lesson.id}`}> Take Quiz </Link> </td>
+                                <td><Link key={lesson.id} to={`/admin/courses/${match.params.courseID}/lessons/${lesson.id}`}> View Questions </Link> </td>
                                 <td><Link to={`/admin/courses/${course.course.id}/lessons/${lesson.id}/edit`}><button className={'btn btn-info'}>edit</button></Link></td>
                                 <td><button id={lesson.id} className={'btn btn-danger'} onClick={deleteLesson} >delete</button></td>
 
