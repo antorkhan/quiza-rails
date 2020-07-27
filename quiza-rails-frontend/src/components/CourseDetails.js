@@ -19,16 +19,41 @@ function CourseDetails({ match }) {
         })
       }
 
-
   return (
-    <div>
+    <div className={'container'}>
+      <div className={'h3 text-center mb-4 mt-5'}>Lessons List</div>
+      <div className={'float-left'}><Link to={`/courses`}>Go Back</Link></div>
+      <div>
+        <table className={"table table-striped table-bordered"}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Lesson Name</th>
+              <th scope="col">Lesson Description</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            {course?.lessons?.map((lesson,index) => {
+              return <tr key={lesson.id}>
+                <td scope="row">{index+1}</td>
+                <td>{lesson.name}</td>
+                <td>{lesson.description}</td>
+                <td><Link key={lesson.id} to={`/courses/${match.params.courseID}/lessons/${lesson.id}`}> Take Quiz </Link> </td>
 
-        <div>{ course?.course?.name } course offers the following lessons.</div> 
-        { course?.lessons?.map(lesson => ( 
-        <Link key={lesson.id} to={`/courses/${match.params.courseID}/lessons/${lesson.id}`}><h1 > {lesson.name} </h1></Link> 
-        ))}
+              </tr>
+            })}
+
+          </tbody>
+        </table>
+      </div>
     </div>
   );
+
+
+
+
+
 }
 
 export default CourseDetails;
