@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
     end
     get '/auth/login', to: 'authentications#login'
+    post '/auth/login', to: 'authentications#login'
 
   end
 end

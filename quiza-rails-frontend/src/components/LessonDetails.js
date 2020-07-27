@@ -28,7 +28,7 @@ function LessonDetails({ match }) {
             axios.post(`${process.env.REACT_APP_URL}/evaluate-answers`, { answers: answers, courseID: match.params.courseID, lessonID: match.params.lessonID })
                 .then((res) => {
                     console.log(res);
-                    setResult(`Your score is ${res.data.score}`);
+                    setResult(`You got ${res.data.score} answer(s) correct!`);
                 })
                 .catch((res) => {
                     setResult(`Something Went Wrong!`);
@@ -47,6 +47,7 @@ function LessonDetails({ match }) {
     return (
         <div className={'container'}>
             <div className={'h3 text-center mb-4 mt-5'}>Answer The Following Questions</div>
+            <div className={'h4 text-center text-info'}>{result}</div>
             <div className={'float-left'}><Link to={`/courses/${match.params.courseID}`}>Go Back</Link></div>
             <div className={'mt-5 mb-5'}>
                 {lesson?.questions?.map((question, index) => (
@@ -61,7 +62,7 @@ function LessonDetails({ match }) {
                 ))}
             </div>
 
-            <div>{result}</div>
+ 
             <button className={'btn btn-success'} onClick={submitForEvaluation}>End Test</button>
         </div>
     );

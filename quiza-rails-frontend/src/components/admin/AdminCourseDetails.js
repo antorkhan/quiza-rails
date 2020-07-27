@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link,useHistory  } from 'react-router-dom'
 import axios from 'axios';
 
 
 
 
 function AdminCourseDetails({ match, authHeader }) {
+    let history = useHistory();
     const [course, setCourse] = useState({});
     let initialState = { name: '', description: '' }
     const [newLesson, setNewLesson] = useState(initialState);
@@ -34,6 +35,7 @@ function AdminCourseDetails({ match, authHeader }) {
 
             })
             .catch((res) => {
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
                 console.log(res);
             })
     }
@@ -53,6 +55,7 @@ function AdminCourseDetails({ match, authHeader }) {
 
             })
             .catch((res) => {
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
                 console.log(res);
             })
     }
@@ -72,6 +75,7 @@ function AdminCourseDetails({ match, authHeader }) {
                 fetchCourse(course.course.id);
             })
             .catch((res) => {
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
                 console.log(res);
             })
     }

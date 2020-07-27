@@ -7,20 +7,20 @@
 
 /* unvisited link */
 .nav-item  a:link {
-    color: red;
+    color: green;
   }
   
   /* visited link */
-  .nav-item a:visited {
+.nav-item a:visited {
     color: green;
   }
   
   /* mouse over link */
-  a:hover {
-    color: hotpink;
-  }
+.nav-item a:hover {
+    color: green;
+}
   
   /* selected link */
-  a:active {
-    color: blue;
-  }
+.nav-item a:active {
+    color: green;
+}

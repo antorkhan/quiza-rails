@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 function AdminDashboard({ authHeader }) {
+    let history = useHistory();
     const [courses, setCourses] = useState([]);
     let initialState = { name: '', description: '' }
     const [newCourse, setnewCourse] = useState(initialState);
@@ -29,7 +30,8 @@ function AdminDashboard({ authHeader }) {
                 console.log(res);
             })
             .catch((res) => {
-                console.log(res);
+                if(res.response.status === 401){history.push(`/admin/log-in`)};
+                console.log(res.response.status == 401);
             })
     }
     let deleteCourse = (event) => {
@@ -48,6 +50,7 @@ function AdminDashboard({ authHeader }) {
                 fetchCourses();
             })
             .catch((res) => {
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
                 console.log(res);
             })
     }
@@ -71,6 +74,7 @@ function AdminDashboard({ authHeader }) {
                 fetchCourses();
             })
             .catch((res) => {
+                if(res.response.status === 401){history.push(`/admin/log-in`)}
                 console.log(res);
             })
     }
