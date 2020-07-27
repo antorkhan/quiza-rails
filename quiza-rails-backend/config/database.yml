@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: quiza_rails_backend_production
-  username: quiza_rails_backend
-  password: <%= ENV['QUIZA_RAILS_BACKEND_DATABASE_PASSWORD'] %>
+  database: quiza_rails_backend_development
+  username: quiza
+  password: S@fe1234
