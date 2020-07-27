@@ -28,6 +28,10 @@ function LessonDetails({ match }) {
             axios.post(`${process.env.REACT_APP_URL}/evaluate-answers`, { answers: answers, courseID: match.params.courseID, lessonID: match.params.lessonID })
                 .then((res) => {
                     console.log(res);
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                      });
                     setResult(`You got ${res.data.score} answer(s) correct!`);
                 })
                 .catch((res) => {

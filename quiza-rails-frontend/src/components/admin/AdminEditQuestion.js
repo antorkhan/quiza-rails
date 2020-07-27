@@ -81,11 +81,11 @@ function AdminEditQuestion({ match, authHeader }) {
                 </div>
 
                 <div className={'col-3'}>
-                    Option 2: <input className={'form-control'} name={'option_3'} value={question?.question?.option_3} onChange={handleChange} placeholder={'Option 2'} />
+                    Option 3: <input className={'form-control'} name={'option_3'} value={question?.question?.option_3} onChange={handleChange} placeholder={'Option 3'} />
                 </div>
 
                 <div className={'col-3'}>
-                    Option 2: <input className={'form-control'} name={'option_4'} value={question?.question?.option_4} onChange={handleChange} placeholder={'Option 2'} />
+                    Option 4: <input className={'form-control'} name={'option_4'} value={question?.question?.option_4} onChange={handleChange} placeholder={'Option 4'} />
                 </div>
             </div>
 
