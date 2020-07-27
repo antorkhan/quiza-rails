@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-function CourseDetails({ match , authHeader}) {
+function AdminEditCourse({ match , authHeader}) {
     const [course, setCourse] = useState({});
     useEffect(()=>{
         fetchCourse(match.params.courseID)
@@ -21,7 +21,7 @@ function CourseDetails({ match , authHeader}) {
         let data = course.course;
         let config = {
             method: 'PATCH',
-            url: `http://localhost:3000/admin/courses/${course.course.id}`,
+            url: `${process.env.REACT_APP_URL}/admin/courses/${course.course.id}`,
             headers: authHeader,
             data : data
           };
@@ -34,7 +34,7 @@ function CourseDetails({ match , authHeader}) {
     const fetchCourse = async (courseID)=>{
         let config = {
             method: 'get',
-            url: `http://localhost:3000/admin/courses/${courseID}`,
+            url: `${process.env.REACT_APP_URL}/admin/courses/${courseID}`,
             headers: authHeader
           };
         axios(config)
@@ -54,4 +54,4 @@ function CourseDetails({ match , authHeader}) {
   );
 }
 
-export default CourseDetails;
+export default AdminEditCourse;
