@@ -3,6 +3,10 @@ class Admin::AuthenticationsController < ApplicationController
   def login
     @sys_user = SysUser.find_by_username(params[:username])
     if @sys_user&.authenticate(params[:password])
+      puts '************************'
+      p @sys_user
+      puts '************************'
+
       token = JsonWebToken.encode(sys_user_id: @sys_user.id)
       time =  24.hours.from_now
       render json: { token: token,

@@ -45,11 +45,11 @@ function AdminEditCourse({ match , authHeader}) {
 
 
   return (
-    <div>
-        <div>{ course?.course?.name } Editing Course</div> 
-        <div>Name:<input name={'name'} value={course?.course?.name} onChange={handleChange}/></div>
-        <div>Description:<input name={'description'} value={course?.course?.description} onChange={handleChange}/></div>
-        <div><button onClick={updateCourse}>Save</button></div>
+    <div className={'container'}>
+        <div className={'h3 text-center'}>{ course?.course?.name } Editing Course</div> 
+        <div>Name:<input className={'form-control'} name={'name'} value={course?.course?.name} onChange={handleChange}/></div>
+        <div>Description:<input className={'form-control'} name={'description'} value={course?.course?.description} onChange={handleChange}/></div>
+        <div><button className={'btn btn-info mt-2'} onClick={updateCourse}>Update Course</button></div>
     </div>
   );
 }

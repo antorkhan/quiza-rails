@@ -23,7 +23,7 @@ require('dotenv').config({path: './.env.'+process.env.NODE_ENV});
 
 function App() {
   let authHeader =  { 
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzeXNfdXNlcl9pZCI6MSwiZXhwIjoxNTk1ODU1NDA0fQ.9dfC-SzYVPaWewqT_M52EgvHhJgBJupNn9LA8cd6VKw'
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzeXNfdXNlcl9pZCI6MSwiZXhwIjoxNTk1OTQ0MzI5fQ.zVGdRM0S0vDz-fzEEh2sLplfNyV4osqUrBrYsxGNBrA'
   }
   return (
     <div>
